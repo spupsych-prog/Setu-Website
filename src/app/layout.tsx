@@ -1,23 +1,26 @@
 import type { Metadata } from "next";
-import { Outfit, Playfair_Display } from "next/font/google";
+import { Lora, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
-import { ColorSchemeScript, MantineProvider, createTheme } from '@mantine/core';
 
-const outfit = Outfit({
+const sourceSans = Source_Sans_3({
   subsets: ["latin"],
   variable: "--font-primary",
+  weight: ["300", "400", "500", "600"],
 });
 
-const playfair = Playfair_Display({
+const lora = Lora({
   subsets: ["latin"],
   variable: "--font-serif",
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
-  title: "Setu | Culturally Appropriate Mental Wellness for the Indian Diaspora",
-  description: "Setu (Bridge) connects the Indian diaspora with culturally sensitive, evidence-based mental wellness care. Specializing in ADHD, Mood Disorders, and Transgenerational Trauma.",
+  title: "Setu — A Bridge to Mental Wellness",
+  description:
+    "Setu connects the Indian diaspora with culturally sensitive, evidence-based mental wellness care. Your bridge to feeling understood.",
   openGraph: {
-    title: "Setu Mental Wellness",
+    title: "Setu — A Bridge to Mental Wellness",
     description: "Your bridge to culturally rooted mind care.",
     url: "https://setuwellness.com",
     siteName: "Setu",
@@ -27,28 +30,15 @@ export const metadata: Metadata = {
   },
 };
 
-const theme = createTheme({
-  primaryColor: 'orange', // Closest to Saffron
-  fontFamily: 'Outfit, sans-serif',
-  headings: {
-    fontFamily: 'Playfair Display, serif',
-  },
-});
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-mantine-color-scheme="light">
-      <head>
-        <ColorSchemeScript defaultColorScheme="light" />
-      </head>
-      <body className={`${outfit.variable} ${playfair.variable} antialiased`}>
-        <MantineProvider theme={theme} defaultColorScheme="light">
-          {children}
-        </MantineProvider>
+    <html lang="en" className="scroll-smooth">
+      <body className={`${sourceSans.variable} ${lora.variable} antialiased`}>
+        {children}
       </body>
     </html>
   );
