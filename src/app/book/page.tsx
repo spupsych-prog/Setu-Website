@@ -9,7 +9,7 @@ export default function BookPage() {
     if (cal) {
       cal("init", "counselling-session", { origin: "https://app.cal.com" });
       cal.ns["counselling-session"]("ui", {
-        theme: "dark",
+        theme: "auto",
         cssVarsPerTheme: {
           light: { "cal-brand": "#B8695E" },
           dark: { "cal-brand": "#3A6B4F" }
@@ -39,8 +39,8 @@ export default function BookPage() {
         </header>
 
         <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-brand-sand ring-8 ring-white/50">
-          <div 
-            id="my-cal-inline-counselling-session" 
+          <div
+            id="my-cal-inline-counselling-session"
             className="w-full h-full min-h-[700px] overflow-scroll"
           />
         </div>
