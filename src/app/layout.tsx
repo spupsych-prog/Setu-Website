@@ -16,17 +16,34 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-  title: "Setu — A Bridge to Mental Wellness",
+  metadataBase: new URL("https://setuwellness.com"),
+  title: {
+    default: "Setu — A Bridge to Mental Wellness",
+    template: "%s | Setu Mental Wellness",
+  },
   description:
-    "Setu connects the Indian diaspora with culturally sensitive, evidence-based mental wellness care. Your bridge to feeling understood.",
+    "Setu connects the Indian diaspora with culturally sensitive, evidence-based mental wellness care. Your bridge to feeling understood and rooted.",
+  keywords: ["mental wellness", "Indian diaspora", "culturally sensitive therapy", "psychologist", "CBT", "ACT", "online therapy"],
+  authors: [{ name: "Purva Sreekaanth" }],
+  creator: "Purva Sreekaanth",
   openGraph: {
     title: "Setu — A Bridge to Mental Wellness",
-    description: "Your bridge to culturally rooted mind care.",
+    description: "Culturally rooted mind care for the Indian diaspora worldwide.",
     url: "https://setuwellness.com",
-    siteName: "Setu",
+    siteName: "Setu Mental Wellness",
     images: [{ url: "/og-image.jpg" }],
     locale: "en_IN",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Setu — A Bridge to Mental Wellness",
+    description: "Culturally rooted mind care for the Indian diaspora worldwide.",
+    images: ["/og-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -41,6 +58,28 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${sourceSans.variable} ${lora.variable} antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "PsychologicalService",
+              "name": "Setu Mental Wellness",
+              "description": "Culturally sensitive mental wellness care for the Indian diaspora.",
+              "url": "https://setuwellness.com",
+              "logo": "https://setuwellness.com/og-image.jpg",
+              "provider": {
+                "@type": "Person",
+                "name": "Purva Sreekaanth",
+                "jobTitle": "Psychologist"
+              },
+              "areaServed": {
+                "@type": "Country",
+                "name": "Global"
+              }
+            })
+          }}
+        />
         <Navbar />
         {children}
         <Script id="cal-init" strategy="afterInteractive">

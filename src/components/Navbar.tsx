@@ -58,16 +58,25 @@ export default function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-[100]">
       <div className="mx-auto max-w-6xl px-6">
-        <nav className="mt-4 flex items-center justify-between rounded-full bg-white/70 backdrop-blur-md border border-brand-sand px-8 py-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] sm:px-10">
-          <Link 
-            href="/" 
-            className="font-serif text-2xl font-semibold text-brand-earth hover:opacity-80 transition-all duration-500 min-w-[110px]"
-            onClick={() => setIsOpen(false)}
-          >
-            <span className="inline-block transition-all duration-500 transform animate-in fade-in zoom-in-95 fill-mode-both">
-              {scripts[scriptIndex]}
-            </span>
-          </Link>
+        <nav className="mt-4 flex items-center justify-between rounded-full bg-white/70 backdrop-blur-md border border-brand-sand px-8 py-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] sm:px-10 gap-4">
+          <div className="flex items-center gap-4 shrink-0">
+            <Link 
+              href="/" 
+              className="font-serif text-3xl font-bold text-brand-earth hover:opacity-80 transition-all duration-500 min-w-[110px]"
+              onClick={() => setIsOpen(false)}
+            >
+              <span className="inline-block transition-all duration-500 transform animate-in fade-in zoom-in-95 fill-mode-both">
+                {scripts[scriptIndex]}
+              </span>
+            </Link>
+            
+            <div className="flex items-center gap-2 sm:gap-4">
+              <div className="h-8 sm:h-10 w-px bg-brand-sand/60" />
+              <p className="text-brand-sage text-[8px] sm:text-[10px] font-medium tracking-[0.1em] sm:tracking-[0.15em] uppercase leading-[1.3] opacity-90">
+                A Bridge to<br />Wellness
+              </p>
+            </div>
+          </div>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8 text-base text-brand-fog">
