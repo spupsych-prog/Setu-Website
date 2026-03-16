@@ -75,32 +75,54 @@ export default function Navbar() {
         </nav>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Popup */}
       <div
         className={cn(
-          "fixed inset-0 bg-brand-linen z-[90] flex flex-col items-center justify-center space-y-8 transition-all duration-300 md:hidden",
-          isOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full pointer-events-none"
+          "fixed inset-0 z-[90] md:hidden transition-all duration-300",
+          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         )}
       >
-        <div className="flex flex-col items-center space-y-8 text-2xl font-serif text-brand-earth">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                "hover:text-brand-warm transition-colors",
-                pathname === link.href ? "text-brand-warm" : ""
-              )}
-            >
-              {link.name}
-            </Link>
-          ))}
-          <Link
-            href="/book"
-            className="btn-sage scale-125 mt-4"
+        {/* Backdrop */}
+        <div 
+          className="absolute inset-0 bg-brand-earth/20 backdrop-blur-sm" 
+          onClick={() => setIsOpen(false)}
+        />
+        
+        {/* Popup Card */}
+        <div
+          className={cn(
+            "absolute top-24 right-6 left-6 bg-white rounded-3xl shadow-2xl border border-brand-sand p-8 transition-all duration-300 transform",
+            isOpen ? "translate-y-0 scale-100" : "-translate-y-4 scale-95"
+          )}
+        >
+          <button
+            className="absolute top-6 right-6 p-2 text-brand-earth hover:text-brand-warm transition-colors"
+            onClick={() => setIsOpen(false)}
+            aria-label="Close menu"
           >
-            Book a Session
-          </Link>
+            <X size={24} />
+          </button>
+
+          <div className="flex flex-col items-center space-y-6 pt-4 text-xl font-serif text-brand-earth">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  "hover:text-brand-warm transition-colors",
+                  pathname === link.href ? "text-brand-warm" : ""
+                )}
+              >
+                {link.name}
+              </Link>
+            ))}
+            <Link
+              href="/book"
+              className="btn-sage w-full mt-4"
+            >
+              Book a Session
+            </Link>
+          </div>
         </div>
       </div>
     </header>
