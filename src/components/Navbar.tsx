@@ -57,9 +57,7 @@ export default function Navbar() {
               </Link>
             ))}
             <Link
-              href="https://calendly.com/spu-psych/counselling-session"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/book"
               className="inline-flex items-center justify-center bg-brand-sage text-white px-6 py-2.5 rounded-full text-sm font-medium tracking-wide shadow-sm transition-all hover:bg-brand-sage/85 hover:shadow-md active:scale-95"
             >
               Book a Session
@@ -98,9 +96,7 @@ export default function Navbar() {
             </Link>
           ))}
           <Link
-            href="https://calendly.com/spu-psych/counselling-session"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/book"
             className="btn-sage scale-125 mt-4"
           >
             Book a Session

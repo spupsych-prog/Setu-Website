@@ -28,7 +28,10 @@ export default function Home() {
               change at home, you belong here.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link href="https://calendly.com/spu-psych/counselling-session" target="_blank" rel="noopener noreferrer" className="btn-primary">
+              <Link 
+                href="/book" 
+                className="btn-primary"
+              >
                 Begin Your Journey
               </Link>
               <Link href="#services" className="btn-ghost">
@@ -203,8 +206,7 @@ export default function Home() {
             judgment.
           </p>
           <Link
-            href="https://calendly.com/spu-psych/counselling-session"
-            target="_blank" rel="noopener noreferrer"
+            href="/book"
             className="inline-flex items-center justify-center bg-brand-sage text-white px-7 py-3 rounded-full text-sm font-medium tracking-wide shadow-sm transition-all hover:bg-brand-sage/85 hover:shadow-md mx-auto"
           >
             Get in Touch
@@ -257,7 +259,10 @@ export default function Home() {
               <Link href="/services" className="block hover:text-brand-blush transition-colors">
                 Services
               </Link>
-              <Link href="https://calendly.com/spu-psych/counselling-session" target="_blank" rel="noopener noreferrer" className="block hover:text-brand-blush transition-colors">
+              <Link 
+                href="/book" 
+                className="block hover:text-brand-blush transition-colors"
+              >
                 Book a Session
               </Link>
               <Link href="#privacy" className="block hover:text-brand-blush transition-colors mt-4 text-xs opacity-60">

@@ -74,7 +74,10 @@ export default function AboutPage() {
                   </p>
                 </div>
                 <div className="pt-6">
-                  <Link href="https://calendly.com/spu-psych/counselling-session" target="_blank" rel="noopener noreferrer" className="btn-primary">
+                  <Link 
+                    href="/book" 
+                    className="btn-primary"
+                  >
                     Book a Consultation
                   </Link>
                 </div>
@@ -114,7 +117,10 @@ export default function AboutPage() {
             <div className="space-y-2 text-brand-sand/70">
               <Link href="/about" className="block hover:text-brand-blush transition-colors">Our Story</Link>
               <Link href="/services" className="block hover:text-brand-blush transition-colors">Services</Link>
-              <Link href="https://calendly.com/spu-psych/counselling-session" target="_blank" rel="noopener noreferrer" className="block hover:text-brand-blush transition-colors">
+              <Link 
+                href="/book" 
+                className="block hover:text-brand-blush transition-colors"
+              >
                 Book a Session
               </Link>
               <Link href="#privacy" className="block hover:text-brand-blush transition-colors mt-4 text-xs opacity-60">

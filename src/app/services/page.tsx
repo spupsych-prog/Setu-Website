@@ -86,7 +86,10 @@ export default function ServicesPage() {
                     ))}
                   </ul>
                   <div className="pt-6">
-                    <Link href="https://calendly.com/spu-psych/counselling-session" target="_blank" rel="noopener noreferrer" className="btn-primary">
+                    <Link 
+                      href="/book" 
+                      className="btn-primary"
+                    >
                       Book a {service.title} Session
                     </Link>
                   </div>
@@ -105,8 +108,7 @@ export default function ServicesPage() {
             Every journey begins with a single step. Book a free discovery call to discuss your needs and find the path that feels right for you.
           </p>
           <Link
-            href="https://calendly.com/spu-psych/counselling-session"
-            target="_blank" rel="noopener noreferrer"
+            href="/book"
             className="inline-flex items-center justify-center bg-brand-sage text-white px-7 py-3 rounded-full text-sm font-medium tracking-wide shadow-sm transition-all hover:bg-brand-sage/85 hover:shadow-md mx-auto"
           >
             Schedule a Discovery Call
@@ -145,7 +147,10 @@ export default function ServicesPage() {
               <Link href="/" className="block hover:text-brand-blush transition-colors">Home</Link>
               <Link href="/about" className="block hover:text-brand-blush transition-colors">Our Story</Link>
               <Link href="/services" className="block hover:text-brand-blush transition-colors">Services</Link>
-              <Link href="https://calendly.com/spu-psych/counselling-session" target="_blank" rel="noopener noreferrer" className="block hover:text-brand-blush transition-colors">
+              <Link 
+                href="/book" 
+                className="block hover:text-brand-blush transition-colors"
+              >
                 Book a Session
               </Link>
             </div>
