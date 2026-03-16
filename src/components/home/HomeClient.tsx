@@ -238,9 +238,9 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
               {[...testimonials, ...testimonials, ...testimonials].map((t, i) => (
                 <div 
                   key={i}
-                  className="w-[350px] flex-shrink-0 bg-white p-8 rounded-2xl shadow-sm border border-brand-sand/50 flex flex-col justify-between"
+                  className="w-[280px] sm:w-[350px] flex-shrink-0 bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-brand-sand/50 flex flex-col justify-between"
                 >
-                  <p className="text-brand-fog italic leading-relaxed mb-6">
+                  <p className="text-brand-fog italic leading-relaxed mb-6 text-sm sm:text-base">
                     &ldquo;{t.text}&rdquo;
                   </p>
                   <div>
