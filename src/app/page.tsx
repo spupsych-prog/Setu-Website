@@ -15,13 +15,16 @@ export default function Home() {
             </Link>
 
             <div className="flex items-center gap-8 text-base text-brand-fog">
-              <Link href="#story" className="transition-colors hover:text-brand-earth">
+              <Link href="/" className="transition-colors hover:text-brand-earth">
+                Home
+              </Link>
+              <Link href="/about" className="transition-colors hover:text-brand-earth">
                 My Story
               </Link>
-              <Link href="#services" className="transition-colors hover:text-brand-earth">
+              <Link href="/services" className="transition-colors hover:text-brand-earth">
                 Services
               </Link>
-              <Link href="https://calendly.com/spu-psych/therapy-session" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-brand-sage text-white px-6 py-2.5 rounded-full text-sm font-medium tracking-wide shadow-sm transition-all hover:bg-brand-sage/85 hover:shadow-md">
+              <Link href="https://calendly.com/spu-psych/counselling-session" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-brand-sage text-white px-6 py-2.5 rounded-full text-sm font-medium tracking-wide shadow-sm transition-all hover:bg-brand-sage/85 hover:shadow-md">
                 Book a Session
               </Link>
             </div>
@@ -49,7 +52,7 @@ export default function Home() {
               change at home, you belong here.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link href="https://calendly.com/spu-psych/therapy-session" target="_blank" rel="noopener noreferrer" className="btn-primary">
+              <Link href="https://calendly.com/spu-psych/counselling-session" target="_blank" rel="noopener noreferrer" className="btn-primary">
                 Begin Your Journey
               </Link>
               <Link href="#services" className="btn-ghost">
@@ -117,37 +120,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ───── My Story ───── */}
-      <section id="story" className="py-24 px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl sm:text-4xl mb-10">
-            The Heart Behind Setu
-          </h2>
-        </div>
-        <div className="mx-auto max-w-2xl space-y-6 text-brand-fog leading-[1.85]">
-          <p>
-            My path into mental health began with a quiet curiosity — a desire
-            to understand how we navigate our inner worlds. That curiosity grew
-            into a deep commitment to helping others walk through their emotions
-            with compassion and clarity.
-          </p>
-          <p>
-            I am a{" "}
-            <span className="font-medium text-brand-warm">psychologist</span>{" "}
-            trained in Cognitive Behavioral Therapy, Acceptance &amp; Commitment
-            Therapy, and Person-Centric Care. I have spent years working across
-            individual, couple, and family settings — honouring the nuance in
-            every relationship.
-          </p>
-          <blockquote className="border-l-2 border-brand-sage pl-6 my-8 italic text-brand-earth font-serif text-lg">
-            &ldquo;Setu was born from the realisation that we all need a space
-            where we are understood — both personally and culturally.&rdquo;
-          </blockquote>
-          <p>
-            We aim to be that bridge: connecting the grounded science of
-            psychology with the rich, lived realities of people carrying many
-            identities at once.
-          </p>
+      {/* ───── Meet the Psychologist (About Teaser) ───── */}
+      <section className="py-24 px-6 overflow-hidden">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="relative aspect-[4/5] w-full max-w-md rounded-2xl overflow-hidden shadow-2xl">
+              <Image
+                src="/assets/about-portrait.png"
+                alt="Psychologist portrait"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="space-y-8">
+              <h2 className="text-3xl sm:text-4xl leading-tight">
+                More than a clinical approach — <span className="italic text-brand-warm">a bridge back to yourself.</span>
+              </h2>
+              <p className="text-brand-fog leading-relaxed text-lg">
+                I believe that healing begins when we are truly seen. At Setu, my goal is to provide a space where your cultural roots are honored and your emotional wellness is prioritized. 
+              </p>
+              <div className="pt-4">
+                <Link href="/about" className="btn-sage">
+                  Explore My Story & Approach
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -202,7 +200,7 @@ export default function Home() {
                     {service.desc}
                   </p>
                   <Link
-                    href="#contact"
+                    href="/services"
                     className="inline-flex items-center gap-1 text-sm font-medium text-brand-sage transition-colors hover:text-brand-earth"
                   >
                     Learn more{" "}
@@ -229,7 +227,7 @@ export default function Home() {
             judgment.
           </p>
           <Link
-            href="https://calendly.com/spu-psych/therapy-session"
+            href="https://calendly.com/spu-psych/counselling-session"
             target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center justify-center bg-brand-sage text-white px-7 py-3 rounded-full text-sm font-medium tracking-wide shadow-sm transition-all hover:bg-brand-sage/85 hover:shadow-md mx-auto"
           >
@@ -277,13 +275,13 @@ export default function Home() {
               Explore
             </p>
             <div className="space-y-2 text-brand-sand/70">
-              <Link href="#story" className="block hover:text-brand-blush transition-colors">
+              <Link href="/about" className="block hover:text-brand-blush transition-colors">
                 Our Story
               </Link>
-              <Link href="#services" className="block hover:text-brand-blush transition-colors">
+              <Link href="/services" className="block hover:text-brand-blush transition-colors">
                 Services
               </Link>
-              <Link href="https://calendly.com/spu-psych/therapy-session" target="_blank" rel="noopener noreferrer" className="block hover:text-brand-blush transition-colors">
+              <Link href="https://calendly.com/spu-psych/counselling-session" target="_blank" rel="noopener noreferrer" className="block hover:text-brand-blush transition-colors">
                 Book a Session
               </Link>
               <Link href="#privacy" className="block hover:text-brand-blush transition-colors mt-4 text-xs opacity-60">
