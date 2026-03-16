@@ -12,12 +12,12 @@ export default function AboutPage() {
         <div className="mx-auto max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             {/* Image Column */}
-            <div className="relative aspect-[4/5] w-full max-w-md mx-auto lg:mx-0 rounded-2xl overflow-hidden shadow-2xl ring-8 ring-white/50">
+            <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl ring-8 ring-white/50">
               <Image
-                src="/assets/about-portrait.png"
-                alt="Psychologist portrait"
+                src="/assets/about-portrait-purva.jpg"
+                alt="Purva Sreekaanth"
                 fill
-                className="object-cover"
+                className="object-cover object-top"
                 priority
               />
             </div>

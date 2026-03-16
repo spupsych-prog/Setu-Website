@@ -28,8 +28,8 @@ export default function Home() {
               change at home, you belong here.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link 
-                href="/book" 
+              <Link
+                href="/book"
                 className="btn-primary"
               >
                 Begin Your Journey
@@ -105,10 +105,10 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative aspect-[4/5] w-full max-w-md rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/assets/about-portrait.png"
+                src="/assets/about-portrait-purva.jpg"
                 alt="Psychologist portrait"
                 fill
-                className="object-cover"
+                className="object-cover object-top"
               />
             </div>
             <div className="space-y-8">
@@ -116,7 +116,7 @@ export default function Home() {
                 More than a clinical approach — <span className="italic text-brand-warm">a bridge back to yourself.</span>
               </h2>
               <p className="text-brand-fog leading-relaxed text-lg">
-                I believe that healing begins when we are truly seen. At Setu, my goal is to provide a space where your cultural roots are honored and your emotional wellness is prioritized. 
+                I believe that healing begins when we are truly seen. At Setu, my goal is to provide a space where your cultural roots are honored and your emotional wellness is prioritized.
               </p>
               <div className="pt-4">
                 <Link href="/about" className="btn-sage">
@@ -259,8 +259,8 @@ export default function Home() {
               <Link href="/services" className="block hover:text-brand-blush transition-colors">
                 Services
               </Link>
-              <Link 
-                href="/book" 
+              <Link
+                href="/book"
                 className="block hover:text-brand-blush transition-colors"
               >
                 Book a Session
