@@ -10,6 +10,31 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
+  const scripts = [
+    "setu",      // English
+    "सेतु",      // Devanagari (Hindi, Marathi, Konkani, etc.)
+    "সেতু",      // Bengali/Assamese/Manipuri
+    "சேது",      // Tamil
+    "సేతు",      // Telugu
+    "ಸೇತು",      // Kannada
+    "സേതു",      // Malayalam
+    "સેતુ",      // Gujarati
+    "ਸੇਤੂ",      // Gurmukhi (Punjabi)
+    "ସେତୁ",      // Odia
+    "سیتو",      // Perso-Arabic (Urdu/Kashmiri)
+    "سيٽو",      // Sindhi
+    "सेतुः",     // Sanskrit (with Visarga)
+  ];
+  const [scriptIndex, setScriptIndex] = useState(0);
+
+  // Cycle brand name scripts every second
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setScriptIndex((prev) => (prev + 1) % scripts.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   // Close menu when route changes
   useEffect(() => {
     setIsOpen(false);
@@ -36,10 +61,12 @@ export default function Navbar() {
         <nav className="mt-4 flex items-center justify-between rounded-full bg-white/70 backdrop-blur-md border border-brand-sand px-8 py-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] sm:px-10">
           <Link 
             href="/" 
-            className="font-serif text-2xl font-semibold text-brand-earth hover:opacity-80 transition-opacity"
+            className="font-serif text-2xl font-semibold text-brand-earth hover:opacity-80 transition-all duration-500 min-w-[110px]"
             onClick={() => setIsOpen(false)}
           >
-            setu
+            <span className="inline-block transition-all duration-500 transform animate-in fade-in zoom-in-95 fill-mode-both">
+              {scripts[scriptIndex]}
+            </span>
           </Link>
 
           {/* Desktop Nav */}
