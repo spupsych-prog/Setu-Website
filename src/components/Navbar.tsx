@@ -57,7 +57,7 @@ export default function Navbar() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-[100]">
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-5xl px-6">
         <nav className="mt-4 flex items-center justify-between rounded-full bg-white/70 backdrop-blur-md border border-brand-sand px-8 py-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] sm:px-10 gap-4">
           <div className="flex items-center gap-4 shrink-0">
             <Link 

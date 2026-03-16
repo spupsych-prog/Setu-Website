@@ -7,7 +7,7 @@ export default function AboutClient() {
   return (
     <div className="min-h-screen bg-brand-linen">
       <main className="pt-36 pb-24 px-6">
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-5xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             {/* Image Column */}
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl ring-8 ring-white/50">
@@ -87,7 +87,7 @@ export default function AboutClient() {
 
       {/* ───── Footer ───── */}
       <footer className="bg-brand-earth text-brand-sand/90 py-16 px-6">
-        <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-12 text-sm">
+        <div className="mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-12 text-sm">
           {/* Brand */}
           <div>
             <Link href="/" className="font-serif text-2xl font-semibold text-brand-blush block mb-3">
@@ -128,7 +128,7 @@ export default function AboutClient() {
           </div>
         </div>
 
-        <div className="mx-auto max-w-6xl mt-12 pt-6 border-t border-brand-sand/10 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-brand-sand/30">
+        <div className="mx-auto max-w-5xl mt-12 pt-6 border-t border-brand-sand/10 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-brand-sand/30">
           <span>© {new Date().getFullYear()} Setu Mental Wellness</span>
           <span>Rooted in empathy</span>
         </div>

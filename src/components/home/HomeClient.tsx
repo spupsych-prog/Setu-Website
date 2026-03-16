@@ -45,7 +45,7 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
     <div className="min-h-screen bg-brand-linen">
       {/* ───── Hero ───── */}
       <section className="relative pt-28 pb-20 px-6">
-        <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="mx-auto max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Text */}
           <div className="max-w-lg">
             <h1 className="text-4xl sm:text-5xl leading-snug mb-6 font-serif">
@@ -87,7 +87,7 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
 
       {/* ───── Focus / Values ───── */}
       <section className="py-24 px-6 bg-brand-sand">
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-5xl">
           <div className="max-w-xl mb-14">
             <h2 className="text-3xl sm:text-4xl mb-4 font-serif">What guides us</h2>
             <p className="text-brand-fog leading-relaxed">
@@ -133,7 +133,7 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
 
       {/* ───── Meet the Psychologist (About Teaser) ───── */}
       <section className="py-24 px-6 overflow-hidden">
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-5xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative aspect-[4/5] w-full max-w-md rounded-2xl overflow-hidden shadow-2xl">
               <Image
@@ -162,7 +162,7 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
 
       {/* ───── Services ───── */}
       <section id="services" className="py-24 px-6 bg-brand-sand">
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-5xl">
           <div className="text-center max-w-xl mx-auto mb-16">
             <h2 className="text-3xl sm:text-4xl mb-4 font-serif">
               Ways we can walk together
@@ -229,7 +229,7 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
       {/* ───── Testimonials (Infinite Scroll) ───── */}
       {testimonials.length > 0 && (
         <section className="py-24 bg-brand-sand/30 overflow-hidden">
-          <div className="mx-auto max-w-6xl px-6 mb-12">
+          <div className="mx-auto max-w-5xl px-6 mb-12">
             <h2 className="text-3xl sm:text-4xl font-serif text-center">Voices of resilience</h2>
           </div>
 
@@ -309,7 +309,7 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
 
       {/* ───── Footer ───── */}
       <footer className="bg-brand-earth text-brand-sand/90 py-16 px-6">
-        <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-12 text-sm">
+        <div className="mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-12 text-sm">
           {/* Brand */}
           <div>
             <Link
@@ -365,7 +365,7 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
           </div>
         </div>
 
-        <div className="mx-auto max-w-6xl mt-12 pt-6 border-t border-brand-sand/10 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-brand-sand/30">
+        <div className="mx-auto max-w-5xl mt-12 pt-6 border-t border-brand-sand/10 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-brand-sand/30">
           <span>© {new Date().getFullYear()} Setu Mental Wellness</span>
           <span>Rooted in empathy</span>
         </div>
