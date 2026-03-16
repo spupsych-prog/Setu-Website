@@ -7,30 +7,6 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-brand-linen">
       {/* ───── Nav ───── */}
-      <header className="fixed inset-x-0 top-0 z-50">
-        <div className="mx-auto max-w-6xl px-6">
-          <nav className="mt-4 flex items-center justify-between rounded-full bg-white/70 backdrop-blur-md border border-brand-sand px-8 py-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
-            <Link href="/" className="font-serif text-2xl font-semibold text-brand-earth">
-              setu
-            </Link>
-
-            <div className="flex items-center gap-8 text-base text-brand-fog">
-              <Link href="/" className="transition-colors hover:text-brand-earth">
-                Home
-              </Link>
-              <Link href="/about" className="text-brand-earth font-medium">
-                My Story
-              </Link>
-              <Link href="/services" className="transition-colors hover:text-brand-earth">
-                Services
-              </Link>
-              <Link href="https://calendly.com/spu-psych/counselling-session" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-brand-sage text-white px-6 py-2.5 rounded-full text-sm font-medium tracking-wide shadow-sm transition-all hover:bg-brand-sage/85 hover:shadow-md">
-                Book a Session
-              </Link>
-            </div>
-          </nav>
-        </div>
-      </header>
 
       <main className="pt-36 pb-24 px-6">
         <div className="mx-auto max-w-6xl">
@@ -69,16 +45,16 @@ export default function AboutPage() {
                 <h2 className="text-2xl font-serif text-brand-earth mb-6">Expertise & Approach</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div>
-                    <h3 className="font-serif text-brand-sage text-lg mb-2">Cognitive Behavioral Therapy (CBT)</h3>
+                    <h3 className="font-serif text-brand-sage text-lg mb-2">Cognitive Behavioral Approach (CBT)</h3>
                     <p className="text-sm text-brand-fog">Practical tools to navigate anxiety, manage stress, and transform self-limiting thought patterns into empowering beliefs.</p>
                   </div>
                   <div>
-                    <h3 className="font-serif text-brand-sage text-lg mb-2">Acceptance & Commitment (ACT)</h3>
+                    <h3 className="font-serif text-brand-sage text-lg mb-2">Acceptance & Commitment Approach (ACT)</h3>
                     <p className="text-sm text-brand-fog">Learning to sit with difficult emotions while taking meaningful steps toward a life aligned with your values.</p>
                   </div>
                   <div>
                     <h3 className="font-serif text-brand-sage text-lg mb-2">Culturally Rooted Care</h3>
-                    <p className="text-sm text-brand-fog">Integrating the unique family dynamics, traditions, and lived experiences of the Indian diaspora into the therapeutic process.</p>
+                    <p className="text-sm text-brand-fog">Integrating the unique family dynamics, traditions, and lived experiences of the Indian diaspora into the care process.</p>
                   </div>
                   <div>
                     <h3 className="font-serif text-brand-sage text-lg mb-2">Person-Centric Focus</h3>

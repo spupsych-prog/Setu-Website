@@ -30,6 +30,8 @@ export const metadata: Metadata = {
   },
 };
 
+import Navbar from "@/components/Navbar";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -38,6 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${sourceSans.variable} ${lora.variable} antialiased`}>
+        <Navbar />
         {children}
       </body>
     </html>
