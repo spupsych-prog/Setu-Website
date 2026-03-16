@@ -61,23 +61,80 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "PsychologicalService",
-              "name": "Setu Mental Wellness",
-              "description": "Culturally sensitive mental wellness care for the Indian diaspora.",
-              "url": "https://setuwellness.com",
-              "logo": "https://setuwellness.com/og-image.jpg",
-              "provider": {
-                "@type": "Person",
-                "name": "Purva Sreekaanth",
-                "jobTitle": "Psychologist"
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "PsychologicalService",
+                "name": "Setu Mental Wellness",
+                "description": "Culturally sensitive mental wellness care for the Indian diaspora.",
+                "url": "https://setuwellness.com",
+                "logo": "https://setuwellness.com/og-image.jpg",
+                "image": "https://setuwellness.com/og-image.jpg",
+                "provider": {
+                  "@id": "https://setuwellness.com/#purva"
+                },
+                "areaServed": {
+                  "@type": "Country",
+                  "name": "Global"
+                },
+                "openingHoursSpecification": {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                  "opens": "18:30",
+                  "closes": "20:30"
+                }
               },
-              "areaServed": {
-                "@type": "Country",
-                "name": "Global"
+              {
+                "@context": "https://schema.org",
+                "@type": "Person",
+                "@id": "https://setuwellness.com/#purva",
+                "name": "Purva Sreekaanth",
+                "jobTitle": "Psychologist",
+                "url": "https://setuwellness.com/about",
+                "image": "https://setuwellness.com/assets/about-portrait-purva.jpg",
+                "knowsAbout": ["CBT", "ACT", "Indian Diaspora Mental Health", "Cultural Wellness"]
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                  {
+                    "@type": "Question",
+                    "name": "How is Setu different from traditional therapy?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Setu focuses on 'mind care' rather than a clinical 'patient' model. We specialize in the Indian diaspora experience, meaning you don't have to explain your cultural background—we already speak that language."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "What does 'culturally rooted' care actually mean?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "It means we honor the unique family dynamics, inherited traditions, and lived experiences of being Indian."
+                    }
+                  }
+                ]
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://setuwellness.com"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "About",
+                    "item": "https://setuwellness.com/about"
+                  }
+                ]
               }
-            })
+            ])
           }}
         />
         <Navbar />

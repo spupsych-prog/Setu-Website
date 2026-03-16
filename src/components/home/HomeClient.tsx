@@ -1,7 +1,38 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+
+function FaqItem({ q, a }: { q: string; a: string }) {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div 
+      className={`group rounded-xl border border-brand-sand bg-white/50 transition-all duration-300 ${isOpen ? "shadow-md bg-white border-brand-sage/20" : "hover:bg-white/80"}`}
+    >
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full px-5 py-4 text-left flex items-center justify-between gap-4"
+      >
+        <h3 className={`text-sm font-serif transition-colors ${isOpen ? "text-brand-earth" : "text-brand-sage"}`}>
+          {q}
+        </h3>
+        <span className={`text-lg transition-transform duration-300 ${isOpen ? "rotate-45" : ""}`}>
+          +
+        </span>
+      </button>
+      <div 
+        className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}`}
+      >
+        <div className="px-5 pb-5 pt-0">
+          <p className="text-xs text-brand-fog leading-relaxed">
+            {a}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function HomeClient() {
   return (
@@ -184,6 +215,39 @@ export default function HomeClient() {
                   </Link>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ───── FAQ (AI Discovery & User Clarity) ───── */}
+      <section className="py-16 px-6 bg-brand-linen">
+        <div className="mx-auto max-w-2xl">
+          <div className="text-center mb-10">
+            <h2 className="text-xl sm:text-2xl mb-2 font-serif text-brand-sage">Frequently Asked Questions</h2>
+            <p className="text-xs text-brand-fog">Simple answers to your initial steps at Setu.</p>
+          </div>
+
+          <div className="space-y-3">
+            {[
+              {
+                q: "How is Setu different from traditional therapy?",
+                a: "Setu focuses on 'mind care' rather than a clinical 'patient' model. We specialize in the Indian diaspora experience, meaning you don't have to explain your cultural background—we already speak that language. Our approach combines evidence-based CBT and ACT with cultural sensitivity.",
+              },
+              {
+                q: "What does 'culturally rooted' care actually mean?",
+                a: "It means we honor the unique family dynamics, inherited traditions, and lived experiences of being Indian. Whether it's navigating intergenerational expectations or the specific challenges of living abroad, our guidance is shaped by an understanding of these roots.",
+              },
+              {
+                q: "Is Setu suitable for someone living outside India?",
+                a: "Absolutely. Setu was built specifically for the global Indian diaspora. We operate across time zones and provide a secure, borderless space for mental wellness, regardless of where you currently call home.",
+              },
+              {
+                q: "Are the sessions confidential and secure?",
+                a: "Yes. Your privacy is our highest priority. All sessions are conducted in a judgment-free, confidential environment, ensuring you have a safe space to explore your inner self without reservations.",
+              },
+            ].map((faq, i) => (
+              <FaqItem key={i} q={faq.q} a={faq.a} />
             ))}
           </div>
         </div>
