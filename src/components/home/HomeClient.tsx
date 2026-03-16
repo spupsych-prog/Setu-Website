@@ -34,7 +34,13 @@ function FaqItem({ q, a }: { q: string; a: string }) {
   );
 }
 
-export default function HomeClient() {
+interface Testimonial {
+  author: string;
+  location: string;
+  text: string;
+}
+
+export default function HomeClient({ testimonials = [] }: { testimonials?: Testimonial[] }) {
   return (
     <div className="min-h-screen bg-brand-linen">
       {/* ───── Hero ───── */}
@@ -219,6 +225,34 @@ export default function HomeClient() {
           </div>
         </div>
       </section>
+
+      {/* ───── Testimonials (Infinite Scroll) ───── */}
+      {testimonials.length > 0 && (
+        <section className="py-24 bg-brand-sand/30 overflow-hidden">
+          <div className="mx-auto max-w-6xl px-6 mb-12">
+            <h2 className="text-3xl sm:text-4xl font-serif text-center">Voices of resilience</h2>
+          </div>
+
+          <div className="relative flex pause-on-hover">
+            <div className="flex animate-marquee gap-8 py-4 px-4 min-w-full">
+              {[...testimonials, ...testimonials, ...testimonials].map((t, i) => (
+                <div 
+                  key={i}
+                  className="w-[350px] flex-shrink-0 bg-white p-8 rounded-2xl shadow-sm border border-brand-sand/50 flex flex-col justify-between"
+                >
+                  <p className="text-brand-fog italic leading-relaxed mb-6">
+                    &ldquo;{t.text}&rdquo;
+                  </p>
+                  <div>
+                    <p className="font-serif text-brand-sage font-medium">{t.author}</p>
+                    <p className="text-xs text-brand-fog/70 uppercase tracking-widest">{t.location}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ───── FAQ (AI Discovery & User Clarity) ───── */}
       <section className="py-16 px-6 bg-brand-linen">

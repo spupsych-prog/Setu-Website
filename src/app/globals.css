@@ -138,6 +138,21 @@
   --sidebar-ring: #D4A27F;
 }
 
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-100% / 3)); }
+}
+
+.animate-marquee {
+  animation: marquee 60s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+.pause-on-hover:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
 @theme inline {
   --font-sans: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
