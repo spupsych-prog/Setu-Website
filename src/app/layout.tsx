@@ -57,7 +57,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${sourceSans.variable} ${lora.variable} antialiased`}>
+      <body className={`${sourceSans.variable} ${lora.variable} antialiased`} suppressHydrationWarning>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -131,6 +131,12 @@ export default function RootLayout({
                     "position": 2,
                     "name": "About",
                     "item": "https://setuwellness.com/about"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Blog",
+                    "item": "https://setuwellness.com/blog"
                   }
                 ]
               }

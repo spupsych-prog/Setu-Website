@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -53,16 +54,26 @@ export default function Navbar() {
     { name: "Home", href: "/" },
     { name: "My Story", href: "/about" },
     { name: "Services", href: "/services" },
+    { name: "Blog", href: "/blog" },
   ];
 
   return (
     <header className="fixed inset-x-0 top-0 z-[100]">
       <div className="mx-auto max-w-5xl px-6">
         <nav className="mt-4 flex items-center justify-between rounded-full bg-white/70 backdrop-blur-md border border-brand-sand px-8 py-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] sm:px-10 gap-4">
-          <div className="flex items-center gap-4 shrink-0">
+          <div className="flex items-center gap-3 sm:gap-4 shrink-0">
+            <Link href="/" className="relative w-8 h-8 sm:w-10 sm:h-10 shrink-0 opacity-85 hover:opacity-100 transition-opacity">
+              <Image
+                src="/assets/logo.png"
+                alt="Setu Logo"
+                fill
+                className="object-contain"
+              />
+            </Link>
+
             <Link 
               href="/" 
-              className="font-serif text-3xl font-bold text-brand-earth hover:opacity-80 transition-all duration-500 min-w-[110px]"
+              className="font-serif text-3xl font-bold text-brand-earth hover:opacity-80 transition-all duration-500 min-w-[95px] text-center block"
               onClick={() => setIsOpen(false)}
             >
               <span className="inline-block transition-all duration-500 transform animate-in fade-in zoom-in-95 fill-mode-both">
