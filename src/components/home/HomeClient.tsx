@@ -336,7 +336,6 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
               >
                 spu.psych@gmail.com
               </Link>
-              <p>Tue – Sun · 6 : 30 – 8 : 30 pm IST</p>
             </div>
           </div>
 

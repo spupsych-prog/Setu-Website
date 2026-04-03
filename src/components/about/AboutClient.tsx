@@ -105,7 +105,6 @@ export default function AboutClient() {
               <Link href="mailto:spu.psych@gmail.com" className="block hover:text-brand-blush transition-colors">
                 spu.psych@gmail.com
               </Link>
-              <p>Tue – Sun · 6 : 30 – 8 : 30 pm IST</p>
             </div>
           </div>
 
