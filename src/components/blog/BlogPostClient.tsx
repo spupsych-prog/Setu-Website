@@ -10,6 +10,7 @@ interface BlogPost {
   date: string;
   excerpt: string;
   coverImage?: string;
+  coverImageAlt?: string;
   tags: string[];
   readingTime: string;
   content: string;
