@@ -18,5 +18,6 @@ collections:
       - { label: "Publish Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
       - { label: "Excerpt", name: "excerpt", widget: "text", hint: "A short summary shown on the blog listing page." }
       - { label: "Cover Image", name: "coverImage", widget: "image", required: false }
+      - { label: "Cover Image Alt Text", name: "coverImageAlt", widget: "string", required: false, hint: "Describe the image for screen readers and SEO." }
       - { label: "Tags", name: "tags", widget: "list", default: ["wellness"] }
       - { label: "Body", name: "body", widget: "markdown" }

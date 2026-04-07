@@ -9,6 +9,7 @@ export interface BlogPost {
   date: string;
   excerpt: string;
   coverImage?: string;
+  coverImageAlt?: string;
   tags: string[];
   readingTime: string;
   content: string;
@@ -33,7 +34,10 @@ export function getAllPosts(): BlogPost[] {
         date: data.date ? new Date(data.date).toISOString().split("T")[0] : "",
         excerpt: data.excerpt ?? "",
         coverImage: data.coverImage ?? undefined,
-        tags: data.tags ?? [],
+        coverImageAlt: data.coverImageAlt ?? undefined,
+        tags: (data.tags ?? []).flatMap((tag: string) => 
+          tag.split(',').map((t) => t.trim()).filter(Boolean)
+        ),
         readingTime: readingTime(content).text,
         content,
       };

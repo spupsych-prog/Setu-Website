@@ -20,12 +20,12 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
 
   return (
     <div className="min-h-screen bg-brand-linen">
-      <main className="pt-36 pb-24 px-6">
+      <main className="pt-28 pb-24 px-6">
         <article className="mx-auto max-w-3xl">
           {/* Back link */}
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-sm text-brand-sage hover:text-brand-earth transition-colors mb-10"
+            className="inline-flex items-center gap-2 text-sm text-brand-sage hover:text-brand-earth transition-colors mb-6"
           >
             <span>←</span> All Posts
           </Link>
@@ -43,29 +43,17 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
               <span>·</span>
               <span>{post.readingTime}</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif leading-tight mb-6">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-serif leading-tight mb-6">
               {post.title}
             </h1>
-            {post.tags.length > 0 && (
-              <div className="flex flex-wrap gap-2">
-                {post.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-[10px] uppercase tracking-widest text-brand-sage bg-brand-sage/10 px-2.5 py-0.5 rounded-full"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
           </header>
 
           {/* Cover image */}
           {post.coverImage && (
-            <div className="relative aspect-[2/1] rounded-2xl overflow-hidden shadow-xl mb-12">
+            <div className="relative aspect-[2/1] rounded-2xl overflow-hidden shadow-2xl mb-12">
               <Image
                 src={post.coverImage}
-                alt={post.title}
+                alt={post.coverImageAlt || post.title}
                 fill
                 className="object-cover"
                 priority

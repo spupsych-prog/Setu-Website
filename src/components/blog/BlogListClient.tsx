@@ -58,18 +58,6 @@ export default function BlogListClient({ posts }: { posts: BlogPostSummary[] }) 
                     <p className="text-sm text-brand-fog leading-relaxed line-clamp-3">
                       {post.excerpt}
                     </p>
-                    {post.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-2 pt-1">
-                        {post.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="text-[10px] uppercase tracking-widest text-brand-sage bg-brand-sage/10 px-2.5 py-0.5 rounded-full"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
                   </div>
                 </Link>
               ))}
