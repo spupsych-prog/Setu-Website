@@ -240,13 +240,9 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
                   key={i}
                   className="w-[280px] sm:w-[350px] flex-shrink-0 bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-brand-sand/50 flex flex-col justify-between"
                 >
-                  <p className="text-brand-fog italic leading-relaxed mb-6 text-sm sm:text-base">
+                  <p className="text-brand-fog italic leading-relaxed text-sm sm:text-base">
                     &ldquo;{t.text}&rdquo;
                   </p>
-                  <div>
-                    <p className="font-serif text-brand-sage font-medium">{t.author}</p>
-                    <p className="text-xs text-brand-fog/70 uppercase tracking-widest">{t.location}</p>
-                  </div>
                 </div>
               ))}
             </div>
