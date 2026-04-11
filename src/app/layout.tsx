@@ -55,6 +55,7 @@ export const metadata: Metadata = {
 
 import Navbar from "@/components/Navbar";
 import Script from "next/script";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 export default function RootLayout({
   children,
@@ -64,6 +65,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${sourceSans.variable} ${lora.variable} antialiased`} suppressHydrationWarning>
+        <GoogleAnalytics gaId="G-Q2W6K686YE" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
