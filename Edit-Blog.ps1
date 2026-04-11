@@ -1,6 +1,9 @@
 # Setu Blog Editor & Publisher (PowerShell Version)
 $ErrorActionPreference = "Stop"
 
+# Ensure we are in the script's directory (the project root)
+Set-Location $PSScriptRoot
+
 Clear-Host
 Write-Host "================================================" -ForegroundColor Cyan
 Write-Host "       SETU BLOG EDITOR & PUBLISHER" -ForegroundColor Cyan
@@ -9,7 +12,7 @@ Write-Host ""
 Write-Host "Starting the local system in the background..." -ForegroundColor Yellow
 
 # Start the CMS server in a hidden window
-$process = Start-Process "npm.cmd" -ArgumentList "run cms" -WindowStyle Hidden -PassThru
+$process = Start-Process "npm.cmd" -ArgumentList "run cms" -WindowStyle Hidden -WorkingDirectory $PSScriptRoot -PassThru
 
 # Wait a few seconds for the server to start before opening the browser
 Start-Sleep -Seconds 5
