@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
-import { TrackSection } from "@/components/analytics/AnalyticsTrackers";
+import { TrackSection, BookingAbandonmentTracker } from "@/components/analytics/AnalyticsTrackers";
+import { trackBookingConfirmed } from "@/lib/analytics";
 
 export default function BookClient() {
   useEffect(() => {
@@ -23,11 +24,18 @@ export default function BookClient() {
         calLink: "purva-sreekaanth-pmqvue/counselling-session",
         config: { layout: "month_view", useSlotsViewOnSmallScreen: "true", theme: "dark" },
       });
+
+      // Fire a GA event when the visitor actually completes a booking
+      cal("on", {
+        action: "bookingSuccessful",
+        callback: () => trackBookingConfirmed(),
+      });
     }
   }, []);
 
   return (
     <TrackSection name="Booking Page Content" className="min-h-screen bg-brand-linen pt-36 pb-24 px-6 text-brand-earth">
+      <BookingAbandonmentTracker />
       <div className="mx-auto max-w-5xl">
         <header className="text-center mb-12">
           <p className="text-brand-sage text-sm font-medium tracking-widest uppercase mb-4">

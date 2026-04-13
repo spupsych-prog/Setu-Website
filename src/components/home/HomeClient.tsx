@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { trackCTA } from "@/lib/analytics";
+import { trackCTA, trackFAQExpand, trackCardHover, trackFooterLink, trackEmailClick } from "@/lib/analytics";
 import { TrackSection } from "@/components/analytics/AnalyticsTrackers";
 
 function FaqItem({ q, a }: { q: string; a: string }) {
@@ -13,7 +13,11 @@ function FaqItem({ q, a }: { q: string; a: string }) {
       className={`group rounded-xl border border-brand-sand bg-white/50 transition-all duration-300 ${isOpen ? "shadow-md bg-white border-brand-sage/20" : "hover:bg-white/80"}`}
     >
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => {
+          const next = !isOpen;
+          setIsOpen(next);
+          if (next) trackFAQExpand(q);
+        }}
         className="w-full px-5 py-4 text-left flex items-center justify-between gap-4"
       >
         <h3 className={`text-sm font-serif transition-colors ${isOpen ? "text-brand-earth" : "text-brand-sage"}`}>
@@ -205,6 +209,7 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
               <div
                 key={i}
                 className="group rounded-2xl bg-white overflow-hidden shadow-sm border border-brand-sand transition-shadow hover:shadow-md"
+                onMouseEnter={() => { const t = setTimeout(() => trackCardHover(service.title, "Home Services"), 1500); return () => clearTimeout(t); }}
               >
                 <div className="relative aspect-[3/2] overflow-hidden">
                   <Image
@@ -342,6 +347,7 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
               <Link
                 href="mailto:spu.psych@gmail.com"
                 className="block hover:text-brand-blush transition-colors"
+                onClick={() => trackEmailClick("Home Footer")}
               >
                 spu.psych@gmail.com
               </Link>
@@ -354,19 +360,20 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
               Explore
             </p>
             <div className="space-y-2 text-brand-sand/70">
-              <Link href="/about" className="block hover:text-brand-blush transition-colors">
+              <Link href="/about" className="block hover:text-brand-blush transition-colors" onClick={() => trackFooterLink("Our Story")}>
                 Our Story
               </Link>
-              <Link href="/services" className="block hover:text-brand-blush transition-colors">
+              <Link href="/services" className="block hover:text-brand-blush transition-colors" onClick={() => trackFooterLink("Services")}>
                 Services
               </Link>
               <Link
                 href="/book"
                 className="block hover:text-brand-blush transition-colors"
+                onClick={() => trackFooterLink("Book a Session")}
               >
                 Book a Session
               </Link>
-              <Link href="#privacy" className="block hover:text-brand-blush transition-colors mt-4 text-xs opacity-60">
+              <Link href="#privacy" className="block hover:text-brand-blush transition-colors mt-4 text-xs opacity-60" onClick={() => trackFooterLink("Privacy Policy")}>
                 Privacy Policy
               </Link>
             </div>

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { trackCTA } from "@/lib/analytics";
+import { trackCTA, trackLogoClick } from "@/lib/analytics";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -63,7 +63,7 @@ export default function Navbar() {
       <div className="mx-auto max-w-5xl px-6">
         <nav className="mt-4 flex items-center justify-between rounded-full bg-white/70 backdrop-blur-md border border-brand-sand px-8 py-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] sm:px-10 gap-4">
           <div className="flex items-center gap-3 sm:gap-4 shrink-0">
-            <Link href="/" className="relative w-8 h-8 sm:w-10 sm:h-10 shrink-0 opacity-85 hover:opacity-100 transition-opacity">
+            <Link href="/" className="relative w-8 h-8 sm:w-10 sm:h-10 shrink-0 opacity-85 hover:opacity-100 transition-opacity" onClick={() => trackLogoClick(pathname)}>
               <Image
                 src="/assets/logo.png"
                 alt="Setu Logo"

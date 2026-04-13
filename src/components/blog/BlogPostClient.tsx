@@ -3,8 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { marked } from "marked";
-import { trackCTA } from "@/lib/analytics";
-import { TrackSection } from "@/components/analytics/AnalyticsTrackers";
+import { trackCTA, trackEmailClick, trackFooterLink } from "@/lib/analytics";
+import { TrackSection, BlogReadCompletionTracker } from "@/components/analytics/AnalyticsTrackers";
 
 interface BlogPost {
   slug: string;
@@ -23,6 +23,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
 
   return (
     <div className="min-h-screen bg-brand-linen">
+      <BlogReadCompletionTracker postTitle={post.title} readingTime={post.readingTime} />
       <main className="pt-28 pb-24 px-6">
         <article className="mx-auto max-w-3xl">
           {/* Back link */}
@@ -114,7 +115,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
           <div>
             <p className="uppercase tracking-widest text-brand-blush text-xs mb-4 font-medium">Say Hello</p>
             <div className="space-y-2 text-brand-sand/70">
-              <Link href="mailto:spu.psych@gmail.com" className="block hover:text-brand-blush transition-colors">
+              <Link href="mailto:spu.psych@gmail.com" className="block hover:text-brand-blush transition-colors" onClick={() => trackEmailClick("Blog Post Footer")}>
                 spu.psych@gmail.com
               </Link>
             </div>
@@ -122,11 +123,11 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
           <div>
             <p className="uppercase tracking-widest text-brand-blush text-xs mb-4 font-medium">Explore</p>
             <div className="space-y-2 text-brand-sand/70">
-              <Link href="/" className="block hover:text-brand-blush transition-colors">Home</Link>
-              <Link href="/about" className="block hover:text-brand-blush transition-colors">Our Story</Link>
-              <Link href="/services" className="block hover:text-brand-blush transition-colors">Services</Link>
-              <Link href="/blog" className="block hover:text-brand-blush transition-colors">Blog</Link>
-              <Link href="/book" className="block hover:text-brand-blush transition-colors">Book a Session</Link>
+              <Link href="/" className="block hover:text-brand-blush transition-colors" onClick={() => trackFooterLink("Home")}>Home</Link>
+              <Link href="/about" className="block hover:text-brand-blush transition-colors" onClick={() => trackFooterLink("Our Story")}>Our Story</Link>
+              <Link href="/services" className="block hover:text-brand-blush transition-colors" onClick={() => trackFooterLink("Services")}>Services</Link>
+              <Link href="/blog" className="block hover:text-brand-blush transition-colors" onClick={() => trackFooterLink("Blog")}>Blog</Link>
+              <Link href="/book" className="block hover:text-brand-blush transition-colors" onClick={() => trackFooterLink("Book a Session")}>Book a Session</Link>
             </div>
           </div>
         </div>

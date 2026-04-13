@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { trackCTA } from "@/lib/analytics";
+import { trackCTA, trackEmailClick, trackFooterLink } from "@/lib/analytics";
 import { TrackSection } from "@/components/analytics/AnalyticsTrackers";
 
 interface BlogPostSummary {
@@ -83,7 +83,7 @@ export default function BlogListClient({ posts }: { posts: BlogPostSummary[] }) 
           <div>
             <p className="uppercase tracking-widest text-brand-blush text-xs mb-4 font-medium">Say Hello</p>
             <div className="space-y-2 text-brand-sand/70">
-              <Link href="mailto:spu.psych@gmail.com" className="block hover:text-brand-blush transition-colors">
+              <Link href="mailto:spu.psych@gmail.com" className="block hover:text-brand-blush transition-colors" onClick={() => trackEmailClick("Blog Footer")}>
                 spu.psych@gmail.com
               </Link>
             </div>
@@ -91,11 +91,11 @@ export default function BlogListClient({ posts }: { posts: BlogPostSummary[] }) 
           <div>
             <p className="uppercase tracking-widest text-brand-blush text-xs mb-4 font-medium">Explore</p>
             <div className="space-y-2 text-brand-sand/70">
-              <Link href="/" className="block hover:text-brand-blush transition-colors">Home</Link>
-              <Link href="/about" className="block hover:text-brand-blush transition-colors">Our Story</Link>
-              <Link href="/services" className="block hover:text-brand-blush transition-colors">Services</Link>
-              <Link href="/blog" className="block hover:text-brand-blush transition-colors">Blog</Link>
-              <Link href="/book" className="block hover:text-brand-blush transition-colors">Book a Session</Link>
+              <Link href="/" className="block hover:text-brand-blush transition-colors" onClick={() => trackFooterLink("Home")}>Home</Link>
+              <Link href="/about" className="block hover:text-brand-blush transition-colors" onClick={() => trackFooterLink("Our Story")}>Our Story</Link>
+              <Link href="/services" className="block hover:text-brand-blush transition-colors" onClick={() => trackFooterLink("Services")}>Services</Link>
+              <Link href="/blog" className="block hover:text-brand-blush transition-colors" onClick={() => trackFooterLink("Blog")}>Blog</Link>
+              <Link href="/book" className="block hover:text-brand-blush transition-colors" onClick={() => trackFooterLink("Book a Session")}>Book a Session</Link>
             </div>
           </div>
         </div>
