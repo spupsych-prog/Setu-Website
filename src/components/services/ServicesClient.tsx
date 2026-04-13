@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { trackCTA } from "@/lib/analytics";
+import { TrackSection } from "@/components/analytics/AnalyticsTrackers";
 
 export default function ServicesClient() {
   const services = [
@@ -46,7 +48,7 @@ export default function ServicesClient() {
   return (
     <div className="min-h-screen bg-brand-linen text-brand-earth">
       <main className="pt-36 pb-24 px-6">
-        <div className="mx-auto max-w-5xl">
+        <TrackSection name="Services Overview" className="mx-auto max-w-5xl">
           <header className="max-w-3xl mb-20">
             <p className="text-brand-sage text-sm font-medium tracking-widest uppercase mb-4">
               How we can walk together
@@ -87,6 +89,7 @@ export default function ServicesClient() {
                     <Link 
                       href="/book" 
                       className="btn-primary"
+                      onClick={() => trackCTA(`Book: ${service.title}`, "Services Page")}
                     >
                       Book a {service.title} Session
                     </Link>
@@ -95,11 +98,11 @@ export default function ServicesClient() {
               </section>
             ))}
           </div>
-        </div>
+        </TrackSection>
       </main>
 
       {/* ───── Contact CTA ───── */}
-      <section className="py-24 px-6 bg-brand-sand/30">
+      <TrackSection name="Services Contact CTA" className="py-24 px-6 bg-brand-sand/30">
         <div className="mx-auto max-w-2xl text-center space-y-6">
           <h2 className="text-3xl font-serif">Not sure where to start?</h2>
           <p className="text-brand-fog leading-relaxed">
@@ -108,11 +111,12 @@ export default function ServicesClient() {
           <Link
             href="/book"
             className="inline-flex items-center justify-center bg-brand-sage text-white px-7 py-3 rounded-full text-sm font-medium tracking-wide shadow-sm transition-all hover:bg-brand-sage/85 hover:shadow-md mx-auto"
+            onClick={() => trackCTA("Schedule Discovery Call", "Services Bottom Banner")}
           >
             Schedule a Discovery Call
           </Link>
         </div>
-      </section>
+      </TrackSection>
 
       {/* ───── Footer ───── */}
       <footer className="bg-brand-earth text-brand-sand/90 py-16 px-6">

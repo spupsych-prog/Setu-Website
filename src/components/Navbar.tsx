@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { trackCTA } from "@/lib/analytics";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -99,6 +100,7 @@ export default function Navbar() {
                   "transition-colors hover:text-brand-earth",
                   pathname === link.href ? "text-brand-earth font-medium" : ""
                 )}
+                onClick={() => trackCTA(`Nav: ${link.name}`, "Navbar Desktop")}
               >
                 {link.name}
               </Link>
@@ -106,6 +108,7 @@ export default function Navbar() {
             <Link
               href="/book"
               className="inline-flex items-center justify-center bg-brand-sage text-white px-6 py-2.5 rounded-full text-sm font-medium tracking-wide shadow-sm transition-all hover:bg-brand-sage/85 hover:shadow-md active:scale-95"
+              onClick={() => trackCTA("Book a Session", "Navbar Desktop")}
             >
               Book a Session
             </Link>
@@ -159,13 +162,21 @@ export default function Navbar() {
                   "hover:text-brand-warm transition-colors",
                   pathname === link.href ? "text-brand-warm" : ""
                 )}
+                onClick={() => {
+                  setIsOpen(false);
+                  trackCTA(`Nav: ${link.name}`, "Navbar Mobile");
+                }}
               >
                 {link.name}
               </Link>
             ))}
             <Link
               href="/book"
-              className="btn-sage w-full mt-4"
+              className="btn-sage w-full mt-4 flex items-center justify-center"
+              onClick={() => {
+                setIsOpen(false);
+                trackCTA("Book a Session", "Navbar Mobile");
+              }}
             >
               Book a Session
             </Link>

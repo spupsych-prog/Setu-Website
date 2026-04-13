@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { trackCTA } from "@/lib/analytics";
+import { TrackSection } from "@/components/analytics/AnalyticsTrackers";
 
 export default function AboutClient() {
   return (
@@ -22,7 +24,7 @@ export default function AboutClient() {
 
             {/* Content Column */}
             <div className="space-y-10">
-              <section>
+              <TrackSection name="About Intro" className="space-y-10 block">
                 <p className="text-brand-sage text-sm font-medium tracking-widest uppercase mb-4">
                   The Heart behind Setu
                 </p>
@@ -37,9 +39,9 @@ export default function AboutClient() {
                     My journey into psychology was driven by a fascination with the human story—how we carry our past, navigate our present, and dream of our future. As a psychologist, I've dedicated my career to creating the kind of space I wish everyone had: one where you don't have to explain the cultural nuances of your life because they are already understood and honored.
                   </p>
                 </div>
-              </section>
+              </TrackSection>
 
-              <section className="bg-brand-sand/50 p-8 rounded-2xl border border-brand-sand">
+              <TrackSection name="About Expertise" className="bg-brand-sand/50 p-8 rounded-2xl border border-brand-sand">
                 <h2 className="text-2xl font-serif text-brand-earth mb-6">Expertise & Approach</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div>
@@ -59,9 +61,9 @@ export default function AboutClient() {
                     <p className="text-sm text-brand-fog">A collaborative partnership where your intuition and goals lead the way, supported by my professional guidance.</p>
                   </div>
                 </div>
-              </section>
+              </TrackSection>
 
-              <section className="space-y-6">
+              <TrackSection name="About Commitment" className="space-y-6">
                 <h2 className="text-2xl font-serif text-brand-earth">My Commitment to You</h2>
                 <div className="space-y-4 text-brand-fog leading-relaxed">
                   <p>
@@ -75,11 +77,12 @@ export default function AboutClient() {
                   <Link 
                     href="/book" 
                     className="btn-primary"
+                    onClick={() => trackCTA("Book a Consultation", "About Commitment")}
                   >
                     Book a Consultation
                   </Link>
                 </div>
-              </section>
+              </TrackSection>
             </div>
           </div>
         </div>

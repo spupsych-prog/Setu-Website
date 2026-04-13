@@ -56,6 +56,7 @@ export const metadata: Metadata = {
 import Navbar from "@/components/Navbar";
 import Script from "next/script";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { ScrollTracker } from "@/components/analytics/AnalyticsTrackers";
 
 export default function RootLayout({
   children,
@@ -151,6 +152,7 @@ export default function RootLayout({
             ])
           }}
         />
+        <ScrollTracker />
         <Navbar />
         {children}
         <Script id="cal-init" strategy="afterInteractive">

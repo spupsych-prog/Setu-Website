@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { trackCTA } from "@/lib/analytics";
+import { TrackSection } from "@/components/analytics/AnalyticsTrackers";
 
 function FaqItem({ q, a }: { q: string; a: string }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -63,10 +65,15 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
               <Link
                 href="/book"
                 className="btn-primary"
+                onClick={() => trackCTA("Begin Your Journey", "Home Hero")}
               >
                 Begin Your Journey
               </Link>
-              <Link href="#services" className="btn-ghost">
+              <Link 
+                href="#services" 
+                className="btn-ghost"
+                onClick={() => trackCTA("Explore Services", "Home Hero")}
+              >
                 Explore Services
               </Link>
             </div>
@@ -86,7 +93,7 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
       </section>
 
       {/* ───── Focus / Values ───── */}
-      <section className="py-24 px-6 bg-brand-sand">
+      <TrackSection name="Home Values" className="py-24 px-6 bg-brand-sand">
         <div className="mx-auto max-w-5xl">
           <div className="max-w-xl mb-14">
             <h2 className="text-3xl sm:text-4xl mb-4 font-serif">What guides us</h2>
@@ -129,10 +136,10 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
             ))}
           </div>
         </div>
-      </section>
+      </TrackSection>
 
       {/* ───── Meet the Psychologist (About Teaser) ───── */}
-      <section className="py-24 px-6 overflow-hidden">
+      <TrackSection name="Home About Teaser" className="py-24 px-6 overflow-hidden">
         <div className="mx-auto max-w-5xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative aspect-[4/5] w-full max-w-md rounded-2xl overflow-hidden shadow-2xl">
@@ -151,17 +158,21 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
                 I believe that healing begins when we are truly seen. At Setu, my goal is to provide a space where your cultural roots are honored and your emotional wellness is prioritized.
               </p>
               <div className="pt-4">
-                <Link href="/about" className="btn-sage">
+                <Link 
+                  href="/about" 
+                  className="btn-sage"
+                  onClick={() => trackCTA("Explore My Story", "Home About Teaser")}
+                >
                   Explore My Story & Approach
                 </Link>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </TrackSection>
 
       {/* ───── Services ───── */}
-      <section id="services" className="py-24 px-6 bg-brand-sand">
+      <TrackSection id="services" name="Home Services" className="py-24 px-6 bg-brand-sand">
         <div className="mx-auto max-w-5xl">
           <div className="text-center max-w-xl mx-auto mb-16">
             <h2 className="text-3xl sm:text-4xl mb-4 font-serif">
@@ -213,6 +224,7 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
                   <Link
                     href="/services"
                     className="inline-flex items-center gap-1 text-sm font-medium text-brand-sage transition-colors hover:text-brand-earth"
+                    onClick={() => trackCTA(`Learn more: ${service.title}`, "Home Services")}
                   >
                     Learn more{" "}
                     <span className="transition-transform group-hover:translate-x-1">
@@ -224,11 +236,11 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
             ))}
           </div>
         </div>
-      </section>
+      </TrackSection>
 
       {/* ───── Testimonials (Infinite Scroll) ───── */}
       {testimonials.length > 0 && (
-        <section className="py-24 bg-brand-sand/30 overflow-hidden">
+        <TrackSection name="Home Testimonials" className="py-24 bg-brand-sand/30 overflow-hidden">
           <div className="mx-auto max-w-5xl px-6 mb-12">
             <h2 className="text-3xl sm:text-4xl font-serif text-center">Voices of resilience</h2>
           </div>
@@ -247,11 +259,11 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
               ))}
             </div>
           </div>
-        </section>
+        </TrackSection>
       )}
 
       {/* ───── FAQ (AI Discovery & User Clarity) ───── */}
-      <section className="py-16 px-6 bg-brand-linen">
+      <TrackSection name="Home FAQ" className="py-16 px-6 bg-brand-linen">
         <div className="mx-auto max-w-2xl">
           <div className="text-center mb-10">
             <h2 className="text-xl sm:text-2xl mb-2 font-serif text-brand-sage">Frequently Asked Questions</h2>
@@ -281,10 +293,10 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
             ))}
           </div>
         </div>
-      </section>
+      </TrackSection>
 
       {/* ───── Contact CTA ───── */}
-      <section id="contact" className="py-24 px-6">
+      <TrackSection id="contact" name="Home Contact CTA" className="py-24 px-6">
         <div className="mx-auto max-w-2xl text-center space-y-6">
           <h2 className="text-3xl sm:text-4xl font-serif">
             Ready to take the first step?
@@ -297,11 +309,12 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
           <Link
             href="/book"
             className="inline-flex items-center justify-center bg-brand-sage text-white px-7 py-3 rounded-full text-sm font-medium tracking-wide shadow-sm transition-all hover:bg-brand-sage/85 hover:shadow-md mx-auto"
+            onClick={() => trackCTA("Get in Touch", "Home Bottom Banner")}
           >
             Get in Touch
           </Link>
         </div>
-      </section>
+      </TrackSection>
 
       {/* ───── Footer ───── */}
       <footer className="bg-brand-earth text-brand-sand/90 py-16 px-6">

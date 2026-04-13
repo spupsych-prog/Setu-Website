@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { trackCTA } from "@/lib/analytics";
+import { TrackSection } from "@/components/analytics/AnalyticsTrackers";
 
 interface BlogPostSummary {
   slug: string;
@@ -17,7 +19,7 @@ export default function BlogListClient({ posts }: { posts: BlogPostSummary[] }) 
   return (
     <div className="min-h-screen bg-brand-linen">
       <main className="pt-36 pb-24 px-6">
-        <div className="mx-auto max-w-5xl">
+        <TrackSection name="Blog Listing" className="mx-auto max-w-5xl">
           <header className="max-w-3xl mb-16">
             <h1 className="text-4xl sm:text-5xl font-serif text-brand-earth mb-4">
               The Setu Journal
@@ -35,6 +37,7 @@ export default function BlogListClient({ posts }: { posts: BlogPostSummary[] }) 
                   key={post.slug}
                   href={`/blog/${post.slug}`}
                   className="group rounded-2xl bg-white overflow-hidden shadow-sm border border-brand-sand transition-all hover:shadow-md hover:-translate-y-1 duration-300"
+                  onClick={() => trackCTA(`Read Post: ${post.title}`, "Blog Listing")}
                 >
                   {post.coverImage && (
                     <div className="relative aspect-[3/2] overflow-hidden">
@@ -63,7 +66,7 @@ export default function BlogListClient({ posts }: { posts: BlogPostSummary[] }) 
               ))}
             </div>
           )}
-        </div>
+        </TrackSection>
       </main>
 
       {/* ───── Footer ───── */}

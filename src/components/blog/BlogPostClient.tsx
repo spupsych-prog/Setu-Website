@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { marked } from "marked";
+import { trackCTA } from "@/lib/analytics";
+import { TrackSection } from "@/components/analytics/AnalyticsTrackers";
 
 interface BlogPost {
   slug: string;
@@ -27,6 +29,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
           <Link
             href="/blog"
             className="inline-flex items-center gap-2 text-sm text-brand-sage hover:text-brand-earth transition-colors mb-6"
+            onClick={() => trackCTA("Back to All Posts", "Blog Post")}
           >
             <span>←</span> All Posts
           </Link>
@@ -63,17 +66,19 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
           )}
 
           {/* Prose content */}
-          <div
-            className="prose prose-lg max-w-none
-              prose-headings:font-serif prose-headings:text-brand-earth
-              prose-p:text-brand-fog prose-p:leading-[1.85]
-              prose-a:text-brand-sage prose-a:underline-offset-4 hover:prose-a:text-brand-warm
-              prose-strong:text-brand-earth
-              prose-li:text-brand-fog
-              prose-blockquote:border-brand-warm/30 prose-blockquote:text-brand-fog/80 prose-blockquote:italic
-              prose-img:rounded-xl prose-img:shadow-md"
-            dangerouslySetInnerHTML={{ __html: htmlContent }}
-          />
+          <TrackSection name={`Blog Post Context: ${post.title}`}>
+            <div
+              className="prose prose-lg max-w-none
+                prose-headings:font-serif prose-headings:text-brand-earth
+                prose-p:text-brand-fog prose-p:leading-[1.85]
+                prose-a:text-brand-sage prose-a:underline-offset-4 hover:prose-a:text-brand-warm
+                prose-strong:text-brand-earth
+                prose-li:text-brand-fog
+                prose-blockquote:border-brand-warm/30 prose-blockquote:text-brand-fog/80 prose-blockquote:italic
+                prose-img:rounded-xl prose-img:shadow-md"
+              dangerouslySetInnerHTML={{ __html: htmlContent }}
+            />
+          </TrackSection>
 
           {/* Author */}
           <div className="mt-16 pt-8 border-t border-brand-sand">
