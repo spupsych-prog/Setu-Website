@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { TrackSection } from "@/components/analytics/AnalyticsTrackers";
 
 export default function BookClient() {
   useEffect(() => {
@@ -26,7 +27,7 @@ export default function BookClient() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-brand-linen pt-36 pb-24 px-6 text-brand-earth">
+    <TrackSection name="Booking Page Content" className="min-h-screen bg-brand-linen pt-36 pb-24 px-6 text-brand-earth">
       <div className="mx-auto max-w-5xl">
         <header className="text-center mb-12">
           <p className="text-brand-sage text-sm font-medium tracking-widest uppercase mb-4">
@@ -45,6 +46,6 @@ export default function BookClient() {
           />
         </div>
       </div>
-    </main>
+    </TrackSection>
   );
 }
