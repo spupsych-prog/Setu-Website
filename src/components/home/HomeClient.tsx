@@ -250,16 +250,20 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
             <h2 className="text-3xl sm:text-4xl font-serif text-center">Voices of resilience</h2>
           </div>
 
-          <div className="relative flex pause-on-hover">
-            <div className="flex animate-marquee gap-8 py-4 px-4 min-w-full">
+          <div className="marquee-container pause-on-hover">
+            <div className="flex animate-marquee gap-6 py-4 px-4 min-w-full">
               {[...testimonials, ...testimonials, ...testimonials].map((t, i) => (
                 <div 
                   key={i}
-                  className="w-[280px] sm:w-[350px] flex-shrink-0 bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-brand-sand/50 flex flex-col justify-between"
+                  className="w-[280px] sm:w-[320px] flex-shrink-0 bg-white p-6 sm:p-7 rounded-2xl shadow-sm border border-brand-sand/50 flex flex-col justify-between snap-center"
                 >
-                  <p className="text-brand-fog italic leading-relaxed text-sm sm:text-base">
+                  <p className="text-brand-fog italic leading-relaxed text-sm sm:text-[15px] mb-6">
                     &ldquo;{t.text}&rdquo;
                   </p>
+                  <div className="pt-4 border-t border-brand-sand/30">
+                    <p className="text-xs font-serif text-brand-earth font-medium">Anonymous</p>
+                    <p className="text-[10px] text-brand-sage uppercase tracking-widest mt-0.5">{t.location}</p>
+                  </div>
                 </div>
               ))}
             </div>
