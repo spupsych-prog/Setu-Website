@@ -9,8 +9,13 @@ Write-Host "================================================" -ForegroundColor C
 Write-Host "       SETU BLOG EDITOR & PUBLISHER" -ForegroundColor Cyan
 Write-Host "================================================" -ForegroundColor Cyan
 Write-Host ""
-Write-Host "Starting the local system in the background..." -ForegroundColor Yellow
+Write-Host "Detecting current branch..." -ForegroundColor Yellow
+$branch = git rev-parse --abbrev-ref HEAD
+Write-Host "Pulling latest changes from origin/$branch..." -ForegroundColor Yellow
+git pull origin $branch
 
+Write-Host ""
+Write-Host "Starting the local system in the background..." -ForegroundColor Yellow
 # Start the CMS server in a hidden window
 $process = Start-Process "npm.cmd" -ArgumentList "run cms" -WindowStyle Hidden -WorkingDirectory $PSScriptRoot -PassThru
 
@@ -54,8 +59,8 @@ if ($choice -eq "y") {
     Write-Host "2. Saving updates..." -ForegroundColor Green
     git commit -m "Blog updates via Setu Editor"
     
-    Write-Host "3. Uploading to live site..." -ForegroundColor Green
-    git push
+    Write-Host "3. Uploading to live site (origin/$branch)..." -ForegroundColor Green
+    git push origin $branch
     
     Write-Host ""
     Write-Host "SUCCESS: Your updates have been published!" -ForegroundColor Cyan
