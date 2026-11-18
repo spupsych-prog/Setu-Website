@@ -4,6 +4,71 @@ $ErrorActionPreference = "Stop"
 # Ensure we are in the script's directory (the project root)
 Set-Location $PSScriptRoot
 
+# ------------------------------------------------------------------
+# Cleanup helpers. These only ever touch node processes whose command
+# line points inside THIS project folder - never other programs.
+# ------------------------------------------------------------------
+$ProjectRoot = $PSScriptRoot
+$EditorPorts = @(3000, 8081)   # 3000 = Next.js site, 8081 = Decap CMS save server
+
+function Stop-ProcessTree([int]$ProcId) {
+    # taskkill /T also stops child processes. Run through cmd so its stderr
+    # noise cannot trigger $ErrorActionPreference = "Stop".
+    cmd.exe /c "taskkill /PID $ProcId /T /F >nul 2>&1"
+}
+
+function Get-ProjectNodeProcesses {
+    Get-CimInstance Win32_Process -Filter "Name = 'node.exe'" -ErrorAction SilentlyContinue |
+        Where-Object { $_.CommandLine -and $_.CommandLine.IndexOf($ProjectRoot, [System.StringComparison]::OrdinalIgnoreCase) -ge 0 }
+}
+
+function Stop-EditorProcesses {
+    $found = @(Get-ProjectNodeProcesses)
+    foreach ($p in $found) {
+        Write-Host "  Stopping editor process (PID $($p.ProcessId))..." -ForegroundColor DarkYellow
+        Stop-ProcessTree $p.ProcessId
+    }
+    return $found.Count
+}
+
+function Get-PortOwners([int]$Port) {
+    Get-NetTCPConnection -LocalPort $Port -State Listen -ErrorAction SilentlyContinue |
+        Select-Object -ExpandProperty OwningProcess -Unique
+}
+
+function Clear-EditorPorts {
+    Write-Host "Checking for old editor processes from this project..." -ForegroundColor Yellow
+    $killed = Stop-EditorProcesses
+    if ($killed -eq 0) { Write-Host "  None found." -ForegroundColor Gray }
+
+    # Give Windows up to 15 seconds to release the ports
+    $deadline = (Get-Date).AddSeconds(15)
+    do {
+        $busy = @()
+        foreach ($port in $EditorPorts) {
+            foreach ($ownerPid in @(Get-PortOwners $port)) {
+                if ($ownerPid) { $busy += [pscustomobject]@{ Port = $port; ProcId = $ownerPid } }
+            }
+        }
+        if ($busy.Count -eq 0) { break }
+        Start-Sleep -Milliseconds 500
+    } while ((Get-Date) -lt $deadline)
+
+    if ($busy.Count -gt 0) {
+        Write-Host ""
+        Write-Host "Cannot start: these ports are in use by something that is NOT part of this editor:" -ForegroundColor Red
+        foreach ($b in $busy) {
+            $proc = Get-Process -Id $b.ProcId -ErrorAction SilentlyContinue
+            $name = if ($proc) { $proc.ProcessName } else { "unknown" }
+            Write-Host "  Port $($b.Port) -> $name (PID $($b.ProcId))" -ForegroundColor Red
+        }
+        Write-Host "Other programs were left alone. Close that program, then run the editor again." -ForegroundColor Red
+        Read-Host "Press [ENTER] to close"
+        exit 1
+    }
+    Write-Host "  Ports 3000 and 8081 are free." -ForegroundColor Green
+}
+
 Clear-Host
 Write-Host "================================================" -ForegroundColor Cyan
 Write-Host "       SETU BLOG EDITOR & PUBLISHER" -ForegroundColor Cyan
@@ -13,6 +78,9 @@ Write-Host "Detecting current branch..." -ForegroundColor Yellow
 $branch = git rev-parse --abbrev-ref HEAD
 Write-Host "Pulling latest changes from origin/$branch..." -ForegroundColor Yellow
 git pull origin $branch
+
+Write-Host ""
+Clear-EditorPorts
 
 Write-Host ""
 Write-Host "Starting the local system in the background..." -ForegroundColor Yellow
@@ -44,9 +112,9 @@ Read-Host "Press [ENTER] here to close the editor and publish your changes to th
 
 Write-Host ""
 Write-Host "Shutting down the editor..." -ForegroundColor Yellow
-# Kill the node processes spun up by npm run cms safely
-Stop-Process -Name "node" -Force -ErrorAction SilentlyContinue
-if ($process) { Stop-Process -Id $process.Id -Force -ErrorAction SilentlyContinue }
+# Stop only the processes this editor started (not every node process on the PC)
+if ($process) { Stop-ProcessTree $process.Id }
+$null = Stop-EditorProcesses
 
 Write-Host ""
 $choice = Read-Host "Do you want to save and publish now? (y/n)"
